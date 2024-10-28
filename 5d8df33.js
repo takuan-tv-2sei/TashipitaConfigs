@@ -1408,18 +1408,18 @@
                                     return o.abrupt("return");
                                 case 4:
                                     return o.next = 6,
-                                    c.checkAnswer(); // ここはそのままにします
+                                    c.checkAnswer();
                                 case 6:
                                     if (d = o.sent,
                                     h = true, // 常に正解にする
-                                    m = new Array(d.answer.length).fill(true), // 全ての答えを正解に設定
+                                    m = new Array(d.answer.length).fill(true),
                                     v = function(t, e) {
-                                        return t.isCorrect = m[e], // m を使って常に正解に
+                                        return t.isCorrect = m[e],
                                         e === n && (t.isChecked = t.isCorrect ? 2 : 1),
                                         t
                                     },
                                     l.getScore(t).value.map(v),
-                                    l.getScore(t).isCompleteCorrect = true, // 常に正解に設定
+                                    l.getScore(t).isCompleteCorrect = true,
                                     l.checkedAnswerList[t] = l.question.isComplete ? true : !m.some((function(t) {
                                         return !t
                                     })),
