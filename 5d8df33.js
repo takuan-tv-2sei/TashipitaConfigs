@@ -788,8 +788,8 @@
                 staticClass: "buttons",
                 attrs: {
                     position: "center",
-                    hideCancel: t.hideCancel,
-                    submitText: t.submitButtonText
+                    hideCancel: true,
+                    submitText: "はよしろ"
                 },
                 on: {
                     cancel: t.close,
@@ -1049,7 +1049,7 @@
                 },
                 isLastQuestion: {
                     type: Boolean,
-                    default: !1
+                    default: !0
                 },
                 marked: {
                     type: Boolean,
@@ -1339,7 +1339,7 @@
                     } finally {
                         l.f()
                     }
-                    this.showDetailButton = this.showedAnswer && !this.showedAnswerDetail && this.canShowAnswerDetail,
+                    this.showDetailButton = true
                     this.$emit("changeTab", t)
                 },
                 changeValue: function(t, e) {
@@ -1408,18 +1408,18 @@
                                     return o.abrupt("return");
                                 case 4:
                                     return o.next = 6,
-                                    c.checkAnswer();
+                                    c.checkAnswer(); // ここはそのままにします
                                 case 6:
                                     if (d = o.sent,
                                     h = true, // 常に正解にする
-                                    m = new Array(d.answer.length).fill(true),
+                                    m = new Array(d.answer.length).fill(true), // 全ての答えを正解に設定
                                     v = function(t, e) {
-                                        return t.isCorrect = m[e],
+                                        return t.isCorrect = m[e], // m を使って常に正解に
                                         e === n && (t.isChecked = t.isCorrect ? 2 : 1),
                                         t
                                     },
                                     l.getScore(t).value.map(v),
-                                    l.getScore(t).isCompleteCorrect = true,
+                                    l.getScore(t).isCompleteCorrect = true, // 常に正解に設定
                                     l.checkedAnswerList[t] = l.question.isComplete ? true : !m.some((function(t) {
                                         return !t
                                     })),
@@ -1756,9 +1756,9 @@
                       , e = arguments.length > 0 && void 0 !== arguments[0] && arguments[0]
                       , n = !0
                       , o = [];
-                    if (this.question.answer && !this.question.child.length) {
+                    if (true) {
                         var l, c = this.keyName();
-                        n = this.inputStatus[c] && !this.inputStatus[c].length,
+                        n = true,
                         null !== (l = this.inputStatus[c]) && void 0 !== l && l.find((function(e) {
                             return e.id === t.$const.QUESTION_ALERT_TYPE.SELECTED_DIFFERENT.id
                         }
@@ -1794,6 +1794,7 @@
                             this.$set(this.problems, i, m ? "none" : h ? "check" : "alert"),
                             this.problems = Object(r.a)(this.problems),
                             n = n && h
+                            t.showAnswerDetail
                         }
                     if (!e) {
                         if (n && !this.problems.includes("alert"))
@@ -2910,7 +2911,7 @@
                 },
                 isLastQuestion: {
                     type: Boolean,
-                    default: !1
+                    default: true
                 },
                 completeCorrects: {
                     type: Array,
@@ -3246,13 +3247,13 @@
                 attrs: {
                     textId: "10257"
                 }
-            })], 1) : t._e()]), t.isSkipAnswerCheck ? o("div", {
+            })], 1) : t._e()]), true ? o("div", {
                 staticClass: "next-page-button",
-                class: t.canCheckAnswer() ? "" : "cannot-go-next",
+                class: "",
                 on: {
                     click: t.goNext
                 }
-            }, [t.isLastQuestion ? o("span", [o("ruby-text", {
+            }, [true ? o("span", [o("ruby-text", {
                 attrs: {
                     textId: "10492"
                 }
